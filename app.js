@@ -3,8 +3,11 @@ const expressHandlebars  = require('express-handlebars');
 const path = require('path');
 /**
  * Require in your library here.
+ * 
  */
+const {performance} = require('perf_hooks')
 const fetch = require('./lib/fetch');
+
 
 /**
  * Create a new instance of express and define the port to attach to.
@@ -39,6 +42,9 @@ app.use('/static', express.static(path.join(__dirname, 'static')));
  * The index route. Your logic here-ish.
  */
 app.get('/', async function (req, res) {
+    //Measure time
+    let _start = performance.now();
+
     // This object is passed to the Handlebars template.
     const urls = [
             'https://markets-data-api-proxy.ft.com/research/webservices/securities/v1/quotes?symbols=FTSE:FSI',
@@ -89,6 +95,10 @@ app.get('/', async function (req, res) {
 
     // This renders the Handlebars view at `views/layouts/home.handlebars`.
     res.render('home', templateData);
+
+    //End measure of time
+    let _stop = performance.now();
+    console.log(`Time taken: ${_stop - _start}`)
 });
 
 /**
