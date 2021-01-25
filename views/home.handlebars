@@ -1,0 +1,32 @@
+
+
+{{#each item}}
+    {{#each this.data as |items|}}
+        {{#each items as |objects|}}
+            <stockName class="name">{{objects.basic.name}}</stockName>
+            <stockVal class="value">{{objects.quote.change1DayPercent}}</stockVal>
+        {{/each}}
+    {{/each}}
+{{/each}}
+<script>
+
+    //Set the Values by colour for negative / positive add the % sign
+    var values = document.getElementsByClassName('value');
+    
+    for (i = 0; i< values.length; i++){
+        let element = values[i];
+        let value = element.innerHTML;
+        if (value < 0) {
+            value = value.substr(0,5);
+            element.classList.add('negative');
+        }
+        else{
+            value = value.substr(0,4);
+            element.classList.add('positive');
+        }
+        
+        element.innerHTML = value + "%";
+    }
+
+</script>
+
