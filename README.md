@@ -10,6 +10,14 @@ I completed the challenge after the interview as I decided that it posed an inte
 
 ***
 
+## Measuring Performance / Evaluated
+
+Performance of Express Handlebars ranges. I preformed a few tests and on completion of the default GET (/) route on localhost.
+Performance ranges from 600ms on first run to less than 47ms after several runs...
+This clearly means that the caching built in is fast and effective and is a good solution for a distributed API based approach.
+
+***
+
 ## The data from the web is from the following data... 
 
 **HTTP Request**
